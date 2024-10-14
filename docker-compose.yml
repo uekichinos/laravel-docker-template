@@ -1,6 +1,6 @@
 services:
-    api:
-        container_name: api
+    app:
+        container_name: app
         build:
             context: .
             target: php
@@ -13,10 +13,10 @@ services:
         ports:
             - 9000:8080
         depends_on:
-            database_mysql:
+            database:
                 condition: service_healthy
-    database_mysql:
-        container_name: database_mysql
+    database:
+        container_name: database
         image: mysql:8.0
         ports:
             -   3306:3306
